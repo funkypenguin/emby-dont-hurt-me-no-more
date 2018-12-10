@@ -12,8 +12,8 @@ else
         # Yes, we have stats. Now, do we have less than 1GB free GPU RAM?
         FREE_GPU_RAM=`cat /gpu-free-ram`
 
-        # If we have more than 1GB RAM, then all good, carry on
-        if [ "$FREE_GPU_RAM" -lt 1024 ]
+        # If we have more than 1.5GB RAM, then all good, carry on
+        if [ "$FREE_GPU_RAM" -lt 1500 ]
         then
                 # Are we doing a HW decode?
                 echo $@ | grep -q h264_cuvid
