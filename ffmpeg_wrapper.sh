@@ -17,9 +17,9 @@ else
 	then
 		$REAL_FFMPEG "$@"
 	else
-		# Too dangerous, bail, emby can do a CPU transcode instead
-		echo "GPU RAM too low, likely that we'll get an X31 crash. Aborting."
-		exit 1
+		# If the transcode matches a h264 decode, strip this out and allow the CPU to decode
+		ARGS=`echo $@ | sed -e 's/-c:v h264_cuvid -resize [[:digit:]]\+x[[:digit:]]\+/-noaccurate_seek/' 
+		$REAL_FFMPEG "$ARGS"
 	fi
 fi
 
