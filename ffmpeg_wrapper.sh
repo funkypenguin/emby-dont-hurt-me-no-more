@@ -19,7 +19,7 @@ else
 	else
 		# If the transcode matches a h264 decode, strip this out and allow the CPU to decode
 		ARGS=`echo $@ | sed -e 's/-c:v h264_cuvid -resize [[:digit:]]\+x[[:digit:]]\+//'` 
-		$REAL_FFMPEG "$ARGS"
+		$REAL_FFMPEG $ARGS
 	fi
 fi
 
